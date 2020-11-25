@@ -1,4 +1,4 @@
-# Deploy Docker Containers on Amazon ECS
+# Deploy compose sample application on Amazon ECS
 
 1. Setup Makefile
 
