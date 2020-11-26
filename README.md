@@ -25,7 +25,7 @@ $ make push-ecr
 image: <<< your ecr registry >>>
 ```
 
-4. Deploy to ECS
+4. Deploy to Amazon ECS
 
 ```
 $ docker context use ***
