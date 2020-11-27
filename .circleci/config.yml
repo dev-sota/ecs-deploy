@@ -1,21 +1,17 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@6.12.2
-  aws-ecs: circleci/aws-ecs@1.3.0
+  aws-ecr: circleci/aws-ecr@6.15.0
 
-jobs:
-  build-and-test:
-    docker:
-      - image: circleci/python:3.7
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run:
-          command: pip3 install -r ~/repo/app/requirements.txt
-          name: Test
-    
 workflows:
-  main:
+  build_and_push_image:
     jobs:
-      - build-and-test
+      - aws-ecr/build-and-push-image:
+          repo: 'flask-app'
+          path: ./app
+          skip-when-tags-exist: false
+          tag: 'latest'
+          filters:
+            branches:
+              only:
+                - main
