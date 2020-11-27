@@ -24,6 +24,7 @@ jobs:
          region: AWS_REGION
          repo: 'flask-app'
          tag: "${CIRCLE_SHA1}"
+         path: ./app
 
 workflows:
   main:
