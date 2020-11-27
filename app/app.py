@@ -19,8 +19,8 @@ def api():
     return jsonify({"language": "python"})
 
 
-@app.route("/deploy")
-def deploy():
+@app.route("/api/check")
+def check():
     return jsonify({"deploy?": "OK"})
 
 # @app.route("/api/users")
