@@ -13,9 +13,21 @@ jobs:
       - checkout
       - run:
           command: pip3 install -r ~/repo/app/requirements.txt
-          name: Test
-    
+
+  build-and-push-image:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - aws-ecr/build-and-push-image:
+         account-url: AWS_ACCOUNT_URL
+         region: AWS_REGION
+         repo: 'flask-app'
+         tag: "${CIRCLE_SHA1}"
+
 workflows:
   main:
     jobs:
-      - build-and-test
+      - build_and_push_image_backend:
+          requires:
+            - build-and-test
