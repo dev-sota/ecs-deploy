@@ -22,7 +22,7 @@ workflows:
           family: '${MY_APP_PREFIX}-task'
           service-name: '${MY_APP_PREFIX}-service'
           cluster-name: '${MY_APP_PREFIX}-cluster'
-          container-image-name-updates: 'container=${MY_APP_PREFIX},tag=${CIRCLE_SHA1}'
+          container-image-name-updates: 'container=${MY_APP_PREFIX},tag=latest'
           filters:
             branches:
               only:
