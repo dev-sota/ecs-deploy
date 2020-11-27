@@ -18,6 +18,11 @@ def hello(name=None):
 def api():
     return jsonify({"language": "python"})
 
+
+@app.route("/deploy")
+def deploy():
+    return jsonify({"deploy?": "OK"})
+
 # @app.route("/api/users")
 # def users_api():
 #     users = get_all_users()
