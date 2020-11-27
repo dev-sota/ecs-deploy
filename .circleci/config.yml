@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: pip3 install -r requirements.txt
+          command: pip3 install -r ~/repo/app/requirements.txt
           name: Test
     
 workflows:
