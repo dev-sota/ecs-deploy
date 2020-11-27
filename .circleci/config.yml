@@ -3,27 +3,15 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.15.0
 
-jobs:
-  build-and-test:
-    docker:
-      - image: circleci/python:3.7
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - run:
-          command: pip3 install -r ~/repo/app/requirements.txt
-
-  build-and-push-image:
-    steps:
-      - checkout
-      - aws-ecr/build-and-push-image:
-         repo: 'flask-app'
-         path: ./app
-
 workflows:
-  main:
+  build_and_push_image:
     jobs:
-      - build-and-test
-      - build-and-push-image:
-          requires:
-            - build-and-test
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL_ENV_VAR_NAME
+          aws-access-key-id: ACCESS_KEY_ID_ENV_VAR_NAME
+          aws-secret-access-key: SECRET_ACCESS_KEY_ENV_VAR_NAME
+          region: AWS_REGION_ENV_VAR_NAME
+          repo: 'flask-app'
+          path: ./app
+          skip-when-tags-exist: false
+          tag: 'latest'
