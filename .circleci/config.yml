@@ -11,3 +11,7 @@ workflows:
           path: ./app
           skip-when-tags-exist: false
           tag: 'latest'
+          filters:
+            branches:
+              only:
+                - main
