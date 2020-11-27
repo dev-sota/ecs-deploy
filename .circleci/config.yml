@@ -14,13 +14,9 @@ jobs:
           command: pip3 install -r ~/repo/app/requirements.txt
 
   build-and-push-image:
-    machine:
-      image: ubuntu-1604:201903-01
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-         account-url: AWS_ACCOUNT_URL
-         region: AWS_REGION
          repo: 'flask-app'
          path: ./app
 
