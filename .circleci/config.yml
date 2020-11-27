@@ -28,6 +28,6 @@ jobs:
 workflows:
   main:
     jobs:
-      - build_and_push_image_backend:
+      - build-and-push-image:
           requires:
             - build-and-test
