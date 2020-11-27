@@ -1,5 +1,7 @@
 # Deploy compose sample application on Amazon ECS
 
+## ECR
+
 1. Setup Makefile
 
 ```
@@ -20,18 +22,38 @@ $ make create-ecr
 $ make push-ecr
 ```
 
-3. Update docker-compose.yml
+## ECS
+
+1. Update docker-compose.yml
 ```
 image: <<< your ecr registry >>>
 ```
 
-4. Deploy to Amazon ECS
+2. Deploy to Amazon ECS
 
 ```
 $ docker context use ***
 $ docker compose up
 ```
 
-Docs.
-[circleci/aws-ecr](https://circleci.com/developer/orbs/orb/circleci/aws-ecr)
-[circleci/aws-ecs](https://circleci.com/developer/orbs/orb/circleci/aws-ecs)
+## CircleCI
+
+1. Create IAM User
+```
+AmazonEC2ContainerRegistryFullAccess
+AmazonEC2ContainerServiceFullAccess
+```
+
+2. Set Environment Variables
+
+```
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_REGION
+AWS_ECR_ACCOUNT_URL
+MY_APP_PREFIX
+```
+
+Docs.  
+[circleci/aws-ecr](https://circleci.com/developer/orbs/orb/circleci/aws-ecr)  
+[circleci/aws-ecs](https://circleci.com/developer/orbs/orb/circleci/aws-ecs)  
