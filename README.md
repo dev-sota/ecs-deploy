@@ -22,20 +22,6 @@ $ make create-ecr
 $ make push-ecr
 ```
 
-## ECS
-
-1. Update docker-compose.yml
-```
-image: <<< your ecr registry >>>
-```
-
-2. Deploy to Amazon ECS
-
-```
-$ docker context use ***
-$ docker compose up
-```
-
 ## CircleCI
 
 1. Create IAM User
